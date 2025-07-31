@@ -1,14 +1,165 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{% block title %}SENA APP{% endblock %}</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+
+  <!-- Estilos personalizados pastel -->
+  <style>
+     body {
+    background-color: #fdfafa; /* Fondo pastel claro */
+    color: #333;
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-weight: 600;
+  }
+
+  /* ====== NAVBAR pastel ====== */
+  .custom-navbar {
+    background-color: #d9f0ff; /* Azul cielo pastel */
+    border-bottom: 2px solid #b0e0e6;
+  }
+
+  .custom-navbar .navbar-brand .brand-name {
+    font-weight: bold;
+    color: #3c6478;
+    font-size: 22px;
+  }
+
+  .custom-navbar .nav-link {
+    color: #3c6478;
+    margin-left: 15px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+
+  .custom-navbar .nav-link:hover {
+    color: #0077b6;
+  }
+
+  /* ====== FOOTER pastel ====== */
+  .custom-footer {
+    background-color: #e7f5ff;
+    color: #555;
+    font-size: 14px;
+    border-top: 2px solid #b0e0e6;
+  }
+
+  .custom-footer strong {
+    color: #009688;
+  }
+
+  /* ====== BOTONES pastel ====== */
+  .btn-pastel {
+    background-color: #cde4d1;
+    color: #2e4d3f;
+    border: none;
+    transition: background-color 0.3s ease;
+  }
+
+  .btn-pastel:hover {
+    background-color: #b2d8bd;
+    color: #2e4d3f;
+  }
+
+  /* ====== JUMBOTRON pastel ====== */
+  .jumbotron {
+    background-color: #b3c3c4;
+    color: #3c6478;
+  }
+
+  .jumbotron hr {
+    border-top: 1px solid #b0e0e6;
+  }
+
+  /* ====== TARJETAS ====== */
+  .card {
+    background-color: #ffffff;
+    border: none;
+    border-left: 4px solid #b0e0e6;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .card:hover {
+    transform: translateY(-2px);
+  }
+
+  .card-title {
+    color: #2f7a68;
+    font-weight: 600;
+  }
+
+  .card-body .btn {
+    margin-top: 10px;
+  }
+
+  /* ====== RESPONSIVE ====== */
+  @media (max-width: 576px) {
+    .custom-navbar .navbar-brand .brand-name {
+      font-size: 18px;
+    }
+
+    .jumbotron {
+      padding: 2rem 1rem;
+    }
+
+    .card {
+      margin-bottom: 1rem;
+    }
+  }
+  </style>
 </head>
 <body>
-    <h1>Base</h1>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg custom-navbar shadow-sm">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="https://senacertificados.co/wp-content/uploads/2021/10/logo-de-SENA-png-Negro-300x300-1.png" alt="Logo SENA" width="40" height="40" class="me-2" />
+        <span class="brand-name">SENA APP</span>
+      </a>
+      <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Aprendices</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contactos</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- CONTENIDO -->
+  <div class="container my-5">
+    {% block content %}
+    {% endblock %}
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="custom-footer text-center py-3">
+    <div class="container">
+      <p class="mb-0">© 2025 SENA APP | Desarrollado por <strong>Mayra Vargas Becerra</strong></p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
