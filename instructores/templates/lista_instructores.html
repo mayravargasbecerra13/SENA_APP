@@ -29,7 +29,6 @@
                 <th>Correo</th>
                 <th>Ciudad</th>
                 <th>Télefono</th>
-                <th>Ciudad</th>
                 <th>Dirección</th>
                 <th>Nivel Educativo</th>
                 <th>Fecha Nacimiento</th>
@@ -42,18 +41,20 @@
                     <td>
                     <strong>{{ instructor.documento_identidad }}</strong>
                     </td>
+                    <td>{{ instructor.tipo_documento }}</td>
                     <td>{{ instructor.nombre_completo }}</td>
                     <td>
                     <a href="mailto:{{instructor.correo }}">{{ instructor.correo }}</a>
                     </td>
-                    <td>{{ instructor.telefono }}</td>
                     <td>{{ instructor.ciudad }}</td>
-                    <td>
-                    <small class="text-muted">{{ instructor.programa }}</small>
-                    </td>
+                    <td>{{ instructor.telefono }}</td>
+                    <td>{{ instructor.direccion }}</td>
+                    <td>{{ instructor.nivel_educativo }}</td>
                     <td>{{ instructor.fecha_nacimiento|date:'d/m/Y' }}</td>
+                    <td>{{ instructor.especialidad }}</td>
+                    
                     <td>
-                    <a href="{% url 'admin:aprendices_aprendiz_change' aprendiz.pk %}" class="btn btn-sm btn-outline-pastel-blue">Editar</a>
+                    <a href="{% url 'admin:instructores_instructor_change' instructor.pk %}" class="btn btn-sm btn-outline-pastel-blue">Editar</a>
                     </td>
                 </tr>
                 {% endfor %}
