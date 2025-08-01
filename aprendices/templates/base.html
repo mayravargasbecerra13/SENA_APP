@@ -141,10 +141,13 @@
             <a class="nav-link active" href="#">Inicio</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="#">Aprendices</a>
+            <a class="nav-link" href="{% url 'aprendices:lista_aprendices' %}">Aprendices</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="#">Contactos</a>
+            <a class="nav-link" href="{% url 'instructores:lista_instructores' %}">Instructores</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="{% url 'programas:lista_programas' %}">Programas</a>
             </li>
         </ul>
         </div>
