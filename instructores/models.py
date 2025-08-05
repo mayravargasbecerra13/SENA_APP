@@ -22,7 +22,7 @@ class Instructor(models.Model):
     tipo_documento = models.CharField(max_length=3, choices= TIPO_DOCUMENTO_CHOICES, default='CC')
     nombre = models.CharField(max_length=100)
     apellido = models.CharField(max_length=100)
-    telefono = models.IntegerField(max_length=10, null=True)
+    telefono = models.CharField(max_length=10, null=True)
     correo = models.EmailField(null=True)
     fecha_nacimiento = models.DateField()
     ciudad = models.CharField(max_length=100, null=True )

@@ -6,7 +6,7 @@ class Aprendiz(models.Model):
     documento_identidad = models.CharField(max_length=100, unique=True)
     nombre = models.CharField(max_length=185, unique=True)
     apellido = models.CharField(max_length=185, unique=True)
-    telefono = models.IntegerField(max_length=10, null=True)
+    telefono = models.CharField(max_length=10, null=True)
     correo = models.EmailField(null=True)
     fecha_nacimiento = models.DateField(null=True)
     ciudad = models.CharField(max_length=100, null=True)
@@ -48,3 +48,57 @@ class Curso(models.Model):
     estado = models.CharField(max_length=3, choices=ESTADO_CHOICES, default='PRO', verbose_name="Estado del Curso")
     observaciones = models.TextField(blank=True, null=True, verbose_name="Observaciones")
     fecha_registro = models.DateTimeField(auto_now_add=True, verbose_name="Fecha de Registro")
+
+    class Meta:
+        verbose_name = "Curso"
+        verbose_name_plural = "Cursos"
+        ordering = ['-fecha_inicio']
+        
+    def __str__(self):
+        return f"{self.codigo} - {self.nombre}"
+    
+    def cupos_disponibles(self):
+        return self.cupos_maximos - self.aprendices.count()
+    
+    def porcentaje_ocupacion(self):
+        if self.cupos_maximos > 0:
+            return (self.aprendices.count() / self.cupos_maximos) * 100
+        return 0
+    
+class InstructorCurso(models.Model):
+    instructor = models.ForeignKey('instructores.Instructor', on_delete=models.CASCADE)
+    curso = models.ForeignKey('Curso', on_delete=models.CASCADE)
+    rol = models.CharField(max_length=100, verbose_name="Rol del Curso")
+    fecha_asignacion = models.DateField(auto_now_add=True, verbose_name="Fecha de Asignación")
+    
+    class Meta:
+        verbose_name = "Instructor por Curso"
+        verbose_name_plural = "Instructores por Curso"
+        unique_together = ('instructor', 'curso')
+        
+    def __str__(self):
+        return f"{self.instructor} - {self.curso} ({self.rol})"
+    
+class AprendizCurso(models.Model):
+    ESTADO_CHOICES = [
+        ('INS', 'Inscrito'),
+        ('ACT', 'Activo'),
+        ('DES', 'Desertor'),
+        ('GRA', 'Graduado'),
+        ('SUS', 'Suspendido'),
+    ]
+    
+    aprendiz = models.ForeignKey(Aprendiz, on_delete=models.CASCADE)
+    curso = models.ForeignKey(Curso, on_delete=models.CASCADE)
+    fecha_inscripcion = models.DateField(auto_now_add=True, verbose_name="Fecha de Inscripción")
+    estado = models.CharField(max_length=3, choices=ESTADO_CHOICES, default='INS', verbose_name="Estado en el Curso")
+    nota_final = models.DecimalField(max_digits=5, decimal_places=2, default=0, verbose_name="Nota Final")
+    observaciones = models.TextField(blank=True, null=True, verbose_name="Observaciones")
+    
+    class Meta:
+        verbose_name = "Aprendiz por Curso"
+        verbose_name_plural = "Aprendices por Curso"
+        unique_together = ['aprendiz', 'curso'] 
+    
+    def __str__(self):
+        return f"{self.aprendiz} - {self.curso} ({self.estado})"
