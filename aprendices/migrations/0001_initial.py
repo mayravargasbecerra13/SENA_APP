@@ -29,7 +29,7 @@ class Migration(migrations.Migration):
                 ("correo", models.EmailField(max_length=254, null=True)),
                 ("fecha_nacimiento", models.DateTimeField(null=True)),
                 ("ciudad", models.CharField(max_length=185, null=True)),
-                ("programa", models.CharField(max_length=185)),
+                
             ],
         ),
     ]
