@@ -27,12 +27,13 @@
                 <th>Tipo Documento</th>
                 <th>Nombre Completo</th>
                 <th>Correo</th>
-                <th>Ciudad</th>
                 <th>Télefono</th>
+                <th>Ciudad</th>
                 <th>Dirección</th>
                 <th>Nivel Educativo</th>
                 <th>Fecha Nacimiento</th>
                 <th>Especialidad</th>
+                <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -46,8 +47,8 @@
                     <td>
                     <a href="mailto:{{instructor.correo }}">{{ instructor.correo }}</a>
                     </td>
-                    <td>{{ instructor.ciudad }}</td>
                     <td>{{ instructor.telefono }}</td>
+                    <td>{{ instructor.ciudad }}</td>
                     <td>{{ instructor.direccion }}</td>
                     <td>{{ instructor.nivel_educativo }}</td>
                     <td>{{ instructor.fecha_nacimiento|date:'d/m/Y' }}</td>
