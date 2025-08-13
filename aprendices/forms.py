@@ -39,8 +39,11 @@ class AprendizForm(forms.Form):
             documento_identidad=self.cleaned_data['documento_identidad'],
             nombre=self.cleaned_data['nombre'],
             apellido=self.cleaned_data['apellido'],
-            telefono=self.cleaned_data.get['telefono'],
-            correo=self.cleaned_data.get['correo'],
+            telefono=self.cleaned_data.get('telefono'),
+            correo=self.cleaned_data.get('correo'),
             fecha_nacimiento=self.cleaned_data['fecha_nacimiento'],
             ciudad=self.cleaned_data('ciudad')
         )
+        
+    
+        

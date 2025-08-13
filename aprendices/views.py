@@ -82,6 +82,7 @@ class AprendizFormView(generic.FormView):
     form_class = AprendizForm
     success_url = "../aprendices"
     
-    def form_valid(self, form):
+def form_valid(self, form):
         form.save()
         return super().form_valid(form)
+
