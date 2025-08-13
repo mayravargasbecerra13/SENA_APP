@@ -3,6 +3,10 @@ from django.http import HttpResponse
 from .models import Instructor
 from django.shortcuts import get_object_or_404
 
+from instructores.forms import InstructorForm
+from django.views import generic
+from django.contrib import messages
+from django.views.generic import FormView
 
 # Create your views here.
 def instructores(request):
@@ -27,3 +31,23 @@ def detalle_instructor(request, instructor_id):
     }
     return HttpResponse(template.render(context, request))
     
+class InstructorFormView(FormView):
+    template_name = 'crear_instructor.html'
+    from_class = InstructorForm
+    success_url = "../instructores"
+    
+    def form_valid(self, form):
+        instructor = form.save()
+        
+        messages.success(
+            self.request,
+            f'El instructor {instructor.nombre} {instructor.apellido} ha sido registrado existosamente.'
+        )
+        return super().form_valid(form)
+    
+    def form_invalid(self, form):
+        messages.error(
+            self.request,
+            'Por favor, corrija los errores en el formulario.'
+        )
+        return super().form_invalid(form)
