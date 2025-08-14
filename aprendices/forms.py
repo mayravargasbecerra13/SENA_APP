@@ -42,7 +42,7 @@ class AprendizForm(forms.Form):
             telefono=self.cleaned_data.get('telefono'),
             correo=self.cleaned_data.get('correo'),
             fecha_nacimiento=self.cleaned_data['fecha_nacimiento'],
-            ciudad=self.cleaned_data('ciudad')
+            ciudad=self.cleaned_data['ciudad']
         )
         
     

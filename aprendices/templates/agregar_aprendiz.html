@@ -4,14 +4,14 @@
 {% block content %}
 <div class="row justify-content-center">
     <div class="col-md-8">
-        <div class="card shadow">
-            <div class="card-header bg-primary text-white">
+        <div class="card-shadow">
+            <div class="card-form">
                 <h3 class="card-title mb-0">
-                    <i class="fas fa-user-plus"></i> Agregar Aprendiz
+                    <i ></i> Agregar Aprendiz
                 </h3>
             </div>
             <div class="card-body">
-                <form method="POST" novalidate>
+                <form method="post" novalidate>
                     {% csrf_token %}
                     <div class="row">
                         <div class="col-md-6 mb-3">
@@ -56,11 +56,11 @@
                         </div>
                     </div>
 
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <a href="{% url 'aprendices:lista_aprendices' %}" class="btn btn-secondary me-md-2">
+                    <div class="btn-can-guar">
+                        <a href="{% url 'aprendices:lista_aprendices' %}" class="btn-cancelar">
                             <i class="fas fa-times"></i> Cancelar
                         </a>
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" class="btn-gr-aprendiz">
                             <i class="fas fa-save"></i> Guardar Aprendiz
                         </button>
                     </div>

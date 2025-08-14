@@ -32,7 +32,7 @@ class InstructorForm(forms.Form):
     def clean_documento_identidad(self):
         documento = self.cleaned_data['documento_identidad']
         if not documento.isdigit():
-            raise forms.ValidationError("El documento debe tener solo números.")
+            raise forms.ValidationError("El documento debe contener solo números.")
         return documento
         
         

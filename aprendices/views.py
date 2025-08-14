@@ -80,9 +80,8 @@ def detalle_aprendiz(request, aprendiz_id):
 class AprendizFormView(generic.FormView):
     template_name = "agregar_aprendiz.html"
     form_class = AprendizForm
-    success_url = "../aprendices"
+    success_url = "../aprendices/"
     
-def form_valid(self, form):
+    def form_valid(self, form):
         form.save()
         return super().form_valid(form)
-
