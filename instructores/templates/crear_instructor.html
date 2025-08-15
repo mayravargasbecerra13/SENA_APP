@@ -6,7 +6,7 @@
 <div class="row justify-content-center">
     <div class="col-md-8">
         <div class="card shadow">
-            <div class="card-header bg-primary text-white">
+            <div class="card-form">
                 <h3 class="card-title mb-0">
                     <i class="fas fa-user-plus"></i> Agregar Instructor
                 </h3>
@@ -95,11 +95,11 @@
                         </div>
                     </div>
 
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <a href="{% url 'instructores:lista_instructores' %}" class="btn btn-secondary me-md-2">
+                    <div class="btn-can-guar">
+                        <a href="{% url 'instructores:lista_instructores' %}" class="btn-cancelar">
                             <i class="fas fa-times"></i> Cancelar
                         </a>
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" class="btn-gr-aprendiz">
                             <i class="fas fa-save"></i> Guardar Instructor
                         </button>
                     </div>
@@ -115,4 +115,20 @@
         </div>
     </div>
 </div>
+{% if form.errors %}
+    <div class="alert alert-danger">
+        <h6><i class="fas fa-exclamation-triangle"></i> Por favor corrija los siguientes errores:</h6>
+        <ul class="mb-0">
+        {% for field in form %}
+            {% for error in field.errors %}
+                <li><strong>{{ field.label }}:</strong> {{ error }}</li>
+            {% endfor %}
+        {% endfor %}
+        {% for error in form.non_field_errors %}
+            <li>{{ error }}</li>
+        {% endfor %}
+        </ul>
+    </div>
+{% endif %}
+
 {% endblock%}

@@ -32,7 +32,7 @@ class Instructor(models.Model):
     anos_experiencia = models.PositiveIntegerField()
     activo = models.BooleanField(default=True)
     fecha_vinculacion = models.DateField()
-    fecha_registro = models.TimeField(auto_now_add=True)
+    fecha_registro = models.DateField(auto_now_add=True)
 
     def __str__(self):
         return f"{self.nombre} {self.apellido} - {self.especialidad}"
